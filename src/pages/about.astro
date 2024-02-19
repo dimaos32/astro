@@ -1,7 +1,5 @@
 ---
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import '../styles/global.css';
+import BaseLayout from '../layouts/BaseLayout.astro';
 
 const pageTitle = 'Обо мне';
 
@@ -24,89 +22,50 @@ const skills = [
 const happy = true;
 const finished = false;
 const goal = 3;
-
-const skillColor = 'navy';
-const fontWeight = 'bold';
-const textCase = 'uppercase';
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{pageTitle}</title>
-    <style define:vars={{ skillColor, fontWeight, textCase }}>
-      h1 {
-        color: purple;
-        font-size: 4rem;
-      }
-      .skill {
-        color: var(--skillColor);
-        font-weight: var(--fontWeight);
-        text-transform: var(--textCase);
-      }
-    </style>
-  </head>
-  <body>
-    <Header />
+<BaseLayout pageTitle={pageTitle}>
+  <h2>… и моём новом сайт на Astro!</h2>
 
-    <main>
-      <h1>{pageTitle}</h1>
-      <h2>… и моём новом сайт на Astro!</h2>
+  <p>
+    Я изучаю введение об Astro. Это вторая страница на моем сайте, и это первая,
+    которую я построил самостоятельно!
+  </p>
 
-      <p>
-        Я изучаю введение об Astro. Это вторая страница на моем сайте, и это
-        первая, которую я построил самостоятельно!
-      </p>
+  <p>
+    Этот сайт будет обновляться по мере того, как я буду проходить больше
+    уроков, поэтому продолжайте проверять его и следите за тем, как идет мой
+    путь!
+  </p>
 
-      <p>
-        Этот сайт будет обновляться по мере того, как я буду проходить больше
-        уроков, поэтому продолжайте проверять его и следите за тем, как идет мой
-        путь!
-      </p>
-
-      <p>Вот несколько фактов обо мне:</p>
-      <ul>
-        <li>Меня зовут {identity.firstName}.</li>
+  <p>Вот несколько фактов обо мне:</p>
+  <ul>
+    <li>Меня зовут {identity.firstName}.</li>
+    <li>
+      Я живу в {identity.country} и работаю в качестве {identity.occupation}.
+    </li>
+    {
+      identity.hobbies.length >= 2 && (
         <li>
-          Я живу в {identity.country} и работаю в качестве {
-            identity.occupation
-          }.
+          Два моих увлечения: {identity.hobbies[0]} и {identity.hobbies[1]}
         </li>
-        {
-          identity.hobbies.length >= 2 && (
-            <li>
-              Два моих увлечения: {identity.hobbies[0]} и {identity.hobbies[1]}
-            </li>
-          )
-        }
-      </ul>
-      <p>Мои навыки:</p>
-      <ul>
-        {skills.map((skill) => <li class="skill">{skill}</li>)}
-      </ul>
+      )
+    }
+  </ul>
+  <p>Мои навыки:</p>
+  <ul>
+    {skills.map((skill) => <li class="skill">{skill}</li>)}
+  </ul>
 
-      {happy && <p>Я рад изучать Astro!</p>}
+  {happy && <p>Я рад изучать Astro!</p>}
 
-      {finished && <p>Я закончил этот урок!</p>}
+  {finished && <p>Я закончил этот урок!</p>}
 
-      {
-        goal === 3 ? (
-          <p>Моя цель — закончить за 3 дня.</p>
-        ) : (
-          <p>Моя цель — не 3 дня.</p>
-        )
-      }
-    </main>
-
-    <Footer />
-
-    <script>
-      import '../scripts/menu.js';
-    </script>
-  </body>
-</html>
+  {
+    goal === 3 ? (
+      <p>Моя цель — закончить за 3 дня.</p>
+    ) : (
+      <p>Моя цель — не 3 дня.</p>
+    )
+  }
+</BaseLayout>
