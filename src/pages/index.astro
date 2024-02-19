@@ -1,4 +1,6 @@
 ---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 
 const pageTitle = 'Главная страница';
@@ -15,14 +17,16 @@ const pageTitle = 'Главная страница';
     <title>{pageTitle}</title>
   </head>
   <body>
-    <header>
-      <a href="/">Главная</a>
-      <a href="/about/">Обо мне</a>
-      <a href="/blog/">Блог</a>
-    </header>
+    <Header />
 
     <main>
       <h1>{pageTitle}</h1>
     </main>
+
+    <Footer />
+
+    <script>
+      import '../scripts/menu.js';
+    </script>
   </body>
 </html>
