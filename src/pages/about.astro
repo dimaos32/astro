@@ -1,8 +1,30 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const pageTitle = 'Обо мне';
+
+const identity = {
+  firstName: 'Николай',
+  country: 'Нидерланды',
+  occupation: 'Технический автор',
+  hobbies: ['фотография', 'дизайн', 'тенис'],
+};
+
+const skills = [
+  'HTML',
+  'CSS',
+  'JavaScript',
+  'React',
+  'Astro',
+  'Оптимизация SEO',
+];
+
+const happy = true;
+const finished = false;
+const goal = 3;
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title={pageTitle}>
   <header>
     <a href="/">Главная</a>
     <a href="/about/">Обо мне</a>
@@ -10,7 +32,7 @@ import Layout from '../layouts/Layout.astro';
   </header>
 
   <main>
-    <h1>Обо мне</h1>
+    <h1>{pageTitle}</h1>
     <h2>… и моём новом сайт на Astro!</h2>
 
     <p>
@@ -23,5 +45,36 @@ import Layout from '../layouts/Layout.astro';
       уроков, поэтому продолжайте проверять его и следите за тем, как идет мой
       путь!
     </p>
+
+    <p>Вот несколько фактов обо мне:</p>
+    <ul>
+      <li>Меня зовут {identity.firstName}.</li>
+      <li>
+        Я живу в {identity.country} и работаю в качестве {identity.occupation}.
+      </li>
+      {
+        identity.hobbies.length >= 2 && (
+          <li>
+            Два моих увлечения: {identity.hobbies[0]} и {identity.hobbies[1]}
+          </li>
+        )
+      }
+    </ul>
+    <p>Мои навыки:</p>
+    <ul>
+      {skills.map((skill) => <li>{skill}</li>)}
+    </ul>
+
+    {happy && <p>Я рад изучать Astro!</p>}
+
+    {finished && <p>Я закончил этот урок!</p>}
+
+    {
+      goal === 3 ? (
+        <p>Моя цель — закончить за 3 дня.</p>
+      ) : (
+        <p>Моя цель — не 3 дня.</p>
+      )
+    }
   </main>
 </Layout>
