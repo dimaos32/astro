@@ -1,6 +1,4 @@
 ---
-import Layout from '../layouts/Layout.astro';
-
 const pageTitle = 'Обо мне';
 
 const identity = {
@@ -24,57 +22,70 @@ const finished = false;
 const goal = 3;
 ---
 
-<Layout title={pageTitle}>
-  <header>
-    <a href="/">Главная</a>
-    <a href="/about/">Обо мне</a>
-    <a href="/blog/">Блог</a>
-  </header>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+  </head>
+  <body>
+    <header>
+      <a href="/">Главная</a>
+      <a href="/about/">Обо мне</a>
+      <a href="/blog/">Блог</a>
+    </header>
 
-  <main>
-    <h1>{pageTitle}</h1>
-    <h2>… и моём новом сайт на Astro!</h2>
+    <main>
+      <h1>{pageTitle}</h1>
+      <h2>… и моём новом сайт на Astro!</h2>
 
-    <p>
-      Я изучаю введение об Astro. Это вторая страница на моем сайте, и это
-      первая, которую я построил самостоятельно!
-    </p>
+      <p>
+        Я изучаю введение об Astro. Это вторая страница на моем сайте, и это
+        первая, которую я построил самостоятельно!
+      </p>
 
-    <p>
-      Этот сайт будет обновляться по мере того, как я буду проходить больше
-      уроков, поэтому продолжайте проверять его и следите за тем, как идет мой
-      путь!
-    </p>
+      <p>
+        Этот сайт будет обновляться по мере того, как я буду проходить больше
+        уроков, поэтому продолжайте проверять его и следите за тем, как идет мой
+        путь!
+      </p>
 
-    <p>Вот несколько фактов обо мне:</p>
-    <ul>
-      <li>Меня зовут {identity.firstName}.</li>
-      <li>
-        Я живу в {identity.country} и работаю в качестве {identity.occupation}.
-      </li>
+      <p>Вот несколько фактов обо мне:</p>
+      <ul>
+        <li>Меня зовут {identity.firstName}.</li>
+        <li>
+          Я живу в {identity.country} и работаю в качестве {
+            identity.occupation
+          }.
+        </li>
+        {
+          identity.hobbies.length >= 2 && (
+            <li>
+              Два моих увлечения: {identity.hobbies[0]} и {identity.hobbies[1]}
+            </li>
+          )
+        }
+      </ul>
+      <p>Мои навыки:</p>
+      <ul>
+        {skills.map((skill) => <li>{skill}</li>)}
+      </ul>
+
+      {happy && <p>Я рад изучать Astro!</p>}
+
+      {finished && <p>Я закончил этот урок!</p>}
+
       {
-        identity.hobbies.length >= 2 && (
-          <li>
-            Два моих увлечения: {identity.hobbies[0]} и {identity.hobbies[1]}
-          </li>
+        goal === 3 ? (
+          <p>Моя цель — закончить за 3 дня.</p>
+        ) : (
+          <p>Моя цель — не 3 дня.</p>
         )
       }
-    </ul>
-    <p>Мои навыки:</p>
-    <ul>
-      {skills.map((skill) => <li>{skill}</li>)}
-    </ul>
-
-    {happy && <p>Я рад изучать Astro!</p>}
-
-    {finished && <p>Я закончил этот урок!</p>}
-
-    {
-      goal === 3 ? (
-        <p>Моя цель — закончить за 3 дня.</p>
-      ) : (
-        <p>Моя цель — не 3 дня.</p>
-      )
-    }
-  </main>
-</Layout>
+    </main>
+  </body>
+</html>

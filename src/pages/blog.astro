@@ -1,23 +1,32 @@
 ---
-import Layout from '../layouts/Layout.astro';
-
 const pageTitle = 'Мой блог об изучении Astro';
 ---
 
-<Layout title={pageTitle}>
-  <header>
-    <a href="/">Главная</a>
-    <a href="/about/">Обо мне</a>
-    <a href="/blog/">Блог</a>
-  </header>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+  </head>
+  <body>
+    <header>
+      <a href="/">Главная</a>
+      <a href="/about/">Обо мне</a>
+      <a href="/blog/">Блог</a>
+    </header>
 
-  <main>
-    <h1>{pageTitle}</h1>
-    <p>Здесь я буду писать о своём путешествии в обучении Astro.</p>
-    <ul>
-      <li><a href="/posts/post_1/">Пост 1</a></li>
-      <li><a href="/posts/post_2/">Пост 2</a></li>
-      <li><a href="/posts/post_3/">Пост 3</a></li>
-    </ul>
-  </main>
-</Layout>
+    <main>
+      <h1>{pageTitle}</h1>
+      <p>Здесь я буду писать о своём путешествии в обучении Astro.</p>
+      <ul>
+        <li><a href="/posts/post_1/">Пост 1</a></li>
+        <li><a href="/posts/post_2/">Пост 2</a></li>
+        <li><a href="/posts/post_3/">Пост 3</a></li>
+      </ul>
+    </main>
+  </body>
+</html>
