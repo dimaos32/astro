@@ -3,6 +3,11 @@ html {
   font-family: sans-serif;
 }
 
+html.dark {
+  background-color: #0d0950;
+  color: #ddcc99;
+}
+
 body {
   margin: 0 auto;
   width: 100%;
@@ -51,6 +56,11 @@ h1 {
   font-size: 1.2rem;
   font-weight: bold;
   text-transform: uppercase;
+  color: #0033cc;
+}
+
+.dark .nav-links a {
+  color: #ddcc99;
 }
 
 .nav-links a:hover,
